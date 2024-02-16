@@ -20,7 +20,10 @@ const TrackingShipment = () => {
 
       <section>
         {shipment ? (
-          <TimeLineShipment shipmentStatus={shipment.CurrentStatus} />
+          <TimeLineShipment
+            shipmentStatus={shipment.CurrentStatus}
+            shipment={shipment}
+          />
         ) : (
           <ShipmentInfoSkeleton />
         )}{" "}
