@@ -6,6 +6,7 @@ import LangSlice from "./features/LangSlice/LangSlice";
 const store = configureStore({
   reducer: {
     lang: LangSlice,
+    shipment: LangSlice,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;

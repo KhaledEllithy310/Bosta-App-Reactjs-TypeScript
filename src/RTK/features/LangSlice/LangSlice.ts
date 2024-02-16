@@ -12,9 +12,6 @@ interface LangState {
 const initialState: LangState = {
   lang: getDataFromLocalStorage("lang") || "ar",
 };
-console.log(getDataFromLocalStorage("lang"));
-
-console.log(initialState.lang);
 
 const LangSlice = createSlice({
   name: "lang",

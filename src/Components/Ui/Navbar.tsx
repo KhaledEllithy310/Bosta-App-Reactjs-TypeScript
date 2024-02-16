@@ -4,7 +4,10 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Close, Dehaze } from "@mui/icons-material";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { getDataFromLocalStorage } from "../../helpers/Functions";
+import {
+  getDataFromLocalStorage,
+  reverseDirection,
+} from "../../helpers/Functions";
 import { useAppDispatch } from "../../RTK/store";
 import { arToEn, enToAr } from "../../RTK/features/LangSlice/LangSlice";
 
@@ -28,6 +31,7 @@ const Navbar = () => {
   const { t, i18n } = useTranslation("navbar");
   const dispatch = useAppDispatch();
   const [lang, setLang] = useState<string>(getDataFromLocalStorage("lang"));
+  console.log(lang);
 
   //========== Handlers ===========//
 
@@ -35,14 +39,12 @@ const Navbar = () => {
     dispatch(i18n.language === "ar" ? enToAr() : arToEn());
   }, [lang]);
 
-  const reverseDirection = () =>
-    lang === "en" ? "flex-row" : "flex-row-reverse";
-
+  // mx-auto max-w-7xl px-2 sm:px-6 lg:px-8
   return (
     <Disclosure as="nav" className="bg-white border-b border-gray-300">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className="  container">
             <div className="relative flex  h-16 items-center justify-between">
               <div
                 className={`${
@@ -57,7 +59,9 @@ const Navbar = () => {
                 </Disclosure.Button>
               </div>
               <div
-                className={`flex flex-1 ${reverseDirection()} items-center justify-between`}
+                className={`flex flex-1 ${reverseDirection(
+                  lang
+                )} items-center justify-between`}
               >
                 {/* Start Logo */}
                 <div className="flex flex-shrink-0 items-center">
@@ -132,7 +136,9 @@ const Navbar = () => {
                 {/* End Logo */}
                 {/* Start Links */}
                 <div className="hidden  lg:ml-6 lg:block">
-                  <div className={`flex gap-6 md:gap-16 ${reverseDirection()}`}>
+                  <div
+                    className={`flex gap-6 md:gap-16 ${reverseDirection(lang)}`}
+                  >
                     {navigation.map((item) => (
                       <NavLink
                         key={item.name}
@@ -148,7 +154,9 @@ const Navbar = () => {
                 <div
                   className={`font-bold ${
                     lang === "en" ? "relative" : "relative"
-                  } inset-y-0  flex ${reverseDirection()} items-center justify-between  gap-4 ${
+                  } inset-y-0  flex ${reverseDirection(
+                    lang
+                  )} items-center justify-between  gap-4 ${
                     lang === "en" ? "pr-10" : ""
                   } sm:static sm:inset-auto  sm:pr-0`}
                 >
@@ -207,7 +215,9 @@ const Navbar = () => {
                   {/* End Track Shipment Button and input */}
 
                   <section
-                    className={`hidden lg:flex ${reverseDirection()}  sm:gap-4`}
+                    className={`hidden lg:flex ${reverseDirection(
+                      lang
+                    )}  sm:gap-4`}
                   >
                     <button className="hover:text-primary">
                       {t("sign_in")}

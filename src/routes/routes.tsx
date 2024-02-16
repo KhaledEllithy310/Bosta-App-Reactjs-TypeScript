@@ -5,6 +5,8 @@ import {
 } from "react-router-dom";
 import Home from "../Pages/Home";
 import RootLayout from "../Pages/Layout";
+import TrackingShipment from "../Pages/TrackingShipment";
+import ErrorHandler from "../Components/Errors/ErrorHandler";
 
 export interface IUser {
   email: string;
@@ -17,8 +19,13 @@ const Router = () => {
     createRoutesFromElements(
       <>
         {/* root layout */}
-        <Route path="/" element={<RootLayout />}>
+        <Route
+          path="/"
+          element={<RootLayout />}
+          errorElement={<ErrorHandler />}
+        >
           <Route index element={<Home />} />
+          <Route path="tracking-shipment" element={<TrackingShipment />} />
         </Route>
       </>
     )

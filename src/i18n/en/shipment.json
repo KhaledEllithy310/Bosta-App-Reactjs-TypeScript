@@ -1,0 +1,23 @@
+{
+  "TICKET_CREATED": "shipment created",
+  "PACKAGE_RECEIVED": "shipment received",
+  "IN_TRANSIT": "in transit",
+  "OUT_FOR_DELIVERY": "Out for delivery",
+  "WAITING_FOR_CUSTOMER_ACTION": "waiting for customer action",
+  "NOT_YET_SHIPPED": "not shipped yet",
+  "DELIVERED_TO_SENDER": "Delivered",
+  "DELIVERED": "Delivered",
+  "CANCELLED": "Cancelled",
+  "PromisedDate": "Promised Date",
+  "shipment_number": "Shipment Number",
+  "last_update": "Last update",
+  "provider": "Provider",
+  "shipment_details": "Shipment Details",
+  "branch_name": "Branch",
+  "date": "Date",
+  "time": "Time",
+  "details": "Details",
+  "delivery_address": "delivery address",
+  "shipment_problems": "is there any problem with your shipment?",
+  "report": "report a complaint"
+}
