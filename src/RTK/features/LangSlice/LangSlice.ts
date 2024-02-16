@@ -20,10 +20,12 @@ const LangSlice = createSlice({
     enToAr: (state) => {
       state.lang = "ar";
       storeInLocalStorage("lang", "ar");
+      document.documentElement.lang = "ar";
     },
     arToEn: (state) => {
       state.lang = "en";
       storeInLocalStorage("lang", "en");
+      document.documentElement.lang = "en";
     },
   },
 });

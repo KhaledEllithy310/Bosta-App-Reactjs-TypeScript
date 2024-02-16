@@ -31,7 +31,6 @@ const Navbar = () => {
   const { t, i18n } = useTranslation("navbar");
   const dispatch = useAppDispatch();
   const [lang, setLang] = useState<string>(getDataFromLocalStorage("lang"));
-  console.log(lang);
 
   //========== Handlers ===========//
 

@@ -33,16 +33,6 @@ export const PromisedDateHandler = (date: string, lang: string) => {
   return dateObj.toLocaleDateString(lang === "ar" ? "ar-EG" : "en-US", options);
 };
 
-// const days = [
-//   "Sunday",
-//   "Monday",
-//   "Tuesday",
-//   "Wednesday",
-//   "Thursday",
-//   "Friday",
-//   "Saturday",
-// ];
-
 export const lastDateHandler = (date: string, lang: string) => {
   const dateObject = new Date(date);
   // const day = days[dateObject.toLocaleDateString().getDay()];
@@ -70,4 +60,43 @@ export const lastDateHandler = (date: string, lang: string) => {
     .trim();
   if (lang === "ar") return `at ${englishHour} ${englishDate} ${arabicDay}`;
   else return `${englishDay} ${englishDate} at ${englishHour}`;
+};
+
+//========== shipment Status Handlers ===========//
+
+export const shipmentStatusHandler = (status: string) => {
+  switch (status) {
+    case "TICKET_CREATED":
+      return {
+        step: 0,
+        color: "#f9ba02",
+      };
+    case "PACKAGE_RECEIVED":
+      return {
+        step: 1,
+        color: "#f9ba02",
+      };
+    case "OUT_FOR_DELIVERY":
+      return {
+        step: 2,
+        color: "#f9ba02",
+      };
+    case "DELIVERED":
+    case "DELIVERED_TO_SENDER":
+      return {
+        step: 4,
+        color: "#36b600",
+      };
+    case "CANCELLED":
+      return {
+        step: 2,
+        color: "#f40105",
+      };
+    // default: {
+    //   return {
+    //     step: 2,
+    //     color: "red",
+    //   };
+    // }
+  }
 };

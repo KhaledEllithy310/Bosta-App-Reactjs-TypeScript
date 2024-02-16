@@ -4,12 +4,89 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: 'Cairo', sans-serif;
+:root {
+  --left-offset: calc(-50% + 6px);
+  --right-offset: calc(50% + 6px);
+}
+
+body,
+html {
+  font-family: 'Cairo', sans-serif !important;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Cairo', sans-serif;
+}
+
+@media screen and (min-width: 600px) {
+  .shipment-info-header {
+    flex-direction: row !important;
+  }
+  html[lang='ar'] .shipment-info-header {
+    flex-direction: row-reverse !important;
+  }
+
+  .css-1kannm4-MuiStepConnector-root,
+  .MuiStepConnector-root {
+    /* left: calc(-50% + 6px) !important;
+    right: calc(50% + 6px) !important; */
+    left: calc(-50% + 6px) !important;
+    right: calc(50% + 6px) !important;
+  }
+
+  html[lang='en'] .css-1kannm4-MuiStepConnector-root,
+  html[lang='en'] .MuiStepConnector-root {
+    left: var(--left-offset) !important;
+    right: var(--right-offset) !important;
+  }
+
+  /* Styles for Arabic language */
+  html[lang='ar'] .css-1kannm4-MuiStepConnector-root,
+  html[lang='ar'] .MuiStepConnector-root {
+    right: var(--left-offset) !important;
+    left: var(--right-offset) !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  /* arrange box of label and circle */
+  .MuiStepLabel-alternativeLabel {
+    display: flex !important;
+    align-items: center !important;
+    gap: 35px !important;
+  }
+  /* control siz of circle  */
+  span.MuiStepLabel-iconContainer {
+    min-width: 50px !important;
+    height: 50px !important;
+    width: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* .MuiStepLabel-iconContainer div {
+    text-align: center;
+  } */
+  /* control position   */
+  .MuiStepConnector-root {
+    top: calc(-60% + 6px) !important;
+    left: 10px !important;
+  }
+  /* control size of line  */
+  .css-8t49rw-MuiStepConnector-line {
+    min-height: 75px !important;
+  }
+
+  /* box of line and icon */
+  .MuiStep-root.MuiStep-vertical span {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+}
+.css-vnkopk-MuiStepLabel-iconContainer.MuiStepLabel-alternativeLabel {
+  height: 50px !important;
 }
