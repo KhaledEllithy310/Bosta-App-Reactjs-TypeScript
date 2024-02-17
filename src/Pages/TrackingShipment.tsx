@@ -9,7 +9,6 @@ import ShipmentDetailsSkeleton from "../Components/Ui/ShipmentDetailsSkeleton";
 
 const TrackingShipment = () => {
   const { shipment } = useSelector(shipmentSelector);
-
   return (
     <section className="container my-6">
       <section>
@@ -27,7 +26,7 @@ const TrackingShipment = () => {
           <ShipmentInfoSkeleton />
         )}{" "}
       </section>
-      {Object.keys(shipment).length ? (
+      
         <section
           className={`shipment-container flex flex-col md:flex-wrap gap-2 mt-6`}
         >
@@ -42,9 +41,6 @@ const TrackingShipment = () => {
             <ShipmentComplain />
           </section>
         </section>
-      ) : (
-        ""
-      )}
     </section>
   );
 };

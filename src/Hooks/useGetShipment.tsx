@@ -23,14 +23,14 @@ const useGetShipment = (
       try {
         const response = await axios.get(URL);
         setShipment(response.data);
-        // console.log(response);
+        console.log(response);
       } catch (e) {
-        // console.log(e);
+        console.log(e);
         Navigate("/error-shipment");
       }
     };
-
-    getShipment();
+    if (!shipmentNumber) Navigate("/");
+    else getShipment();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shipmentNumber]);
 

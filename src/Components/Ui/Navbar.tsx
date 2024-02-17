@@ -14,16 +14,16 @@ import useGetShipment from "./../../Hooks/useGetShipment";
 import { storeShipment } from "../../RTK/shipment/shipment";
 
 const navigation = [
-  { name: "home", href: "#", current: true },
-  { name: "prices", href: "#", current: false },
-  { name: "call_sales", href: "#", current: false },
+  { name: "home", href: "/", current: true },
+  { name: "prices", href: "/", current: false },
+  { name: "call_sales", href: "/", current: false },
 ];
 const navigationMobile = [
-  { name: "home", href: "#", current: true },
-  { name: "prices", href: "#", current: false },
-  { name: "call_sales", href: "#", current: false },
-  { name: "sign_in", href: "#", current: false },
-  { name: "lang", href: "#", current: false },
+  { name: "home", href: "/", current: true },
+  { name: "prices", href: "/", current: false },
+  { name: "call_sales", href: "/", current: false },
+  { name: "sign_in", href: "/", current: false },
+  { name: "lang", href: "/", current: false },
 ];
 
 function classNames(...classes: string[]): string {

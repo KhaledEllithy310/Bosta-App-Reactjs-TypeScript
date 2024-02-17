@@ -22,7 +22,7 @@ const ShipmentDetails = ({ shipment }: IProps) => {
         {t("shipment_details")}
       </h3>
       <section className="overflow-auto outline outline-1 outline-gray-200 rounded-md">
-        <table className="w-full text-xs">
+        <table className="w-full text-sm font-normal">
           {/* Start Header */}
           <thead className="bg-gray-200 ">
             <tr
