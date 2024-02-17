@@ -48,7 +48,6 @@ const Navbar = () => {
   const Navigate = useNavigate();
 
   //========== Handlers ===========//
-  useEffect(() => {}, [inputRef]);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputRef.current !== null) {
@@ -212,7 +211,6 @@ const Navbar = () => {
                           <button
                             className="absolute z-10 right-0 bg-primary text-white px-2 py-1 rounded-r-md"
                             type="submit"
-                            onClick={() => close()}
                           >
                             <Search />
                           </button>
