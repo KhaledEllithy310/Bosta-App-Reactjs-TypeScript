@@ -179,7 +179,7 @@ const Navbar = () => {
                     lang
                   )} items-center justify-between  gap-4 ${
                     lang === "en" ? "pr-10" : ""
-                  } sm:static sm:inset-auto  sm:pr-0`}
+                  } sm:static sm:inset-auto  sm:pr-10`}
                 >
                   {/* Start Track Shipment Button and input */}
                   <section
@@ -196,7 +196,7 @@ const Navbar = () => {
                     {/* Start Drop List  menu */}
                     <div
                       className={
-                        "dropdown-content block px-4 py-2 text-sm text-gray-700"
+                        "dropdown-content block px-5 py-2 text-sm text-gray-700"
                       }
                     >
                       <p>{t("track_your_shipment")}</p>

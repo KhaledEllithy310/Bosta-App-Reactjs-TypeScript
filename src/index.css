@@ -86,7 +86,7 @@ html {
     left: 10px !important;
   }
   /* control size of line  */
-  .css-8t49rw-MuiStepConnector-line {
+  .css-8t49rw-MuiStepConnector-line ,.MuiStepConnector-line {
     min-height: 75px !important;
   }
 
