@@ -255,7 +255,7 @@ const Navbar = () => {
                 <Disclosure.Button
                   key={item.name}
                   as="a"
-                  href={item.href}
+                  // href={item.href}
                   className={classNames(
                     item.current
                       ? "bg-primary text-white"
@@ -275,7 +275,7 @@ const Navbar = () => {
                     }
                   }}
                 >
-                  {t(item.name)}
+                  <NavLink to={item.href}>{t(item.name)}</NavLink>{" "}
                 </Disclosure.Button>
               ))}
             </div>
