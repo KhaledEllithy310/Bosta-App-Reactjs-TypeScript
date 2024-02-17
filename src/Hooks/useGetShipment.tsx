@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { IShipment } from "../interfaces";
 
 const useGetShipment = (
-  shipmentNumber: number = 13737343
+  shipmentNumber: number | undefined
 ): [
   IShipment | undefined,
   React.Dispatch<React.SetStateAction<IShipment | undefined>>
@@ -13,7 +13,9 @@ const useGetShipment = (
   //13737343 cancellation
 
   const [shipment, setShipment] = useState<IShipment | undefined>(undefined);
-  const URL = `https://tracking.bosta.co/shipments/track/${shipmentNumber}`;
+  const URL = `https://tracking.bosta.co/shipments/track/${
+    shipmentNumber ? shipmentNumber : ""
+  }`;
   useEffect(() => {
     const getShipment = async () => {
       try {

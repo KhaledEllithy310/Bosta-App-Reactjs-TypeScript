@@ -33,23 +33,23 @@ export const PromisedDateHandler = (date: string, lang: string) => {
   return dateObj.toLocaleDateString(lang === "ar" ? "ar-EG" : "en-US", options);
 };
 
+const formattedDay: Intl.DateTimeFormatOptions = {
+  weekday: "long",
+};
+
+const formattedDate: Intl.DateTimeFormatOptions = {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+};
+const formattedHour: Intl.DateTimeFormatOptions = {
+  hour: "numeric",
+  minute: "2-digit",
+  hour12: true,
+};
+
 export const lastDateHandler = (date: string, lang: string) => {
   const dateObject = new Date(date);
-  // const day = days[dateObject.toLocaleDateString().getDay()];
-  const formattedDay: Intl.DateTimeFormatOptions = {
-    weekday: "long",
-  };
-
-  const formattedDate: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  };
-  const formattedHour: Intl.DateTimeFormatOptions = {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-  };
 
   const arabicDay = dateObject.toLocaleDateString("ar-EG", formattedDay);
   const englishDay = dateObject.toLocaleDateString("en", formattedDay);
@@ -62,6 +62,21 @@ export const lastDateHandler = (date: string, lang: string) => {
   else return `${englishDay} ${englishDate} at ${englishHour}`;
 };
 
+export const dateFormat = (date: string) => {
+  const dateObject = new Date(date);
+
+  const englishDate = dateObject.toLocaleDateString("en", formattedDate);
+  return englishDate;
+};
+export const timeFormat = (date: string) => {
+  const dateObject = new Date(date);
+
+  const englishHour = dateObject
+    .toLocaleDateString("en", formattedHour)
+    .split(",")[1]
+    .trim();
+  return englishHour;
+};
 //========== shipment Status Handlers ===========//
 
 export const shipmentStatusHandler = (status: string) => {

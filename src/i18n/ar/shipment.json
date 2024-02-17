@@ -13,11 +13,12 @@
   "last_update": "اخر تحديث",
   "provider": "اسم التاجر",
   "shipment_details": "تفاصيل الشحنة",
-  "branch_name": "الفرع",
+  "branch": "الفرع",
   "date": "التاريخ",
   "time": "الوقت",
   "details": "تفاصيل",
   "delivery_address": "عنوان التسليم",
-  "shipment_problems": "هل يوجد مشكلة في شحنتك؟",
-  "report": "إبلاغ عن مشكلة"
+  "shipment_problems": "!هل يوجد مشكلة في شحنتك؟",
+  "report": "إبلاغ عن مشكلة",
+  "address": "  Cairo,,, امبابة شارع طلعت حرب مدينة العمال بجوار البرنس منزل 17 بلوك 33,"
 }

@@ -21,6 +21,15 @@ html {
   font-family: 'Cairo', sans-serif;
 }
 
+@media screen and (min-width: 1024px) {
+  .shipment-container {
+    flex-direction: row !important;
+  }
+  html[lang='ar'] .shipment-container {
+    flex-direction: row-reverse !important;
+  }
+}
+
 @media screen and (min-width: 600px) {
   .shipment-info-header {
     flex-direction: row !important;
@@ -89,4 +98,27 @@ html {
 }
 .css-vnkopk-MuiStepLabel-iconContainer.MuiStepLabel-alternativeLabel {
   height: 50px !important;
+}
+
+td {
+  text-overflow: nowrap;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 180px;
+  height: max-content;
+  padding: 12px 16px;
+  border-radius: 4px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 99;
+  right: 0;
+  top: 100%;
+}
+.trigger-button:hover .dropdown-content {
+  display: block;
 }

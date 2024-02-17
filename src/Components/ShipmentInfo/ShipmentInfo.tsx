@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { IShipment } from "../../interfaces";
 import { useSelector } from "react-redux";
-import { langSelector } from "../../RTK/shipment/shipment";
 import {
   PromisedDateHandler,
   changeTextDirection,
@@ -9,6 +8,7 @@ import {
   reverseDirection,
   shipmentStatusHandler,
 } from "../../helpers/Functions";
+import { langSelector } from "../../RTK/features/LangSlice/LangSlice";
 interface IProps {
   shipment: IShipment;
 }

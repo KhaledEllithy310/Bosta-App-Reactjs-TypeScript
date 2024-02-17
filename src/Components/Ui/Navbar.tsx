@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Fragment, useEffect, useState } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Close, Dehaze } from "@mui/icons-material";
+import { useEffect, useRef, useState } from "react";
+import { Disclosure } from "@headlessui/react";
+import { Close, Dehaze, Search } from "@mui/icons-material";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
@@ -10,6 +10,8 @@ import {
 } from "../../helpers/Functions";
 import { useAppDispatch } from "../../RTK/store";
 import { arToEn, enToAr } from "../../RTK/features/LangSlice/LangSlice";
+import useGetShipment from "./../../Hooks/useGetShipment";
+import { storeShipment } from "../../RTK/shipment/shipment";
 
 const navigation = [
   { name: "home", href: "#", current: true },
@@ -32,13 +34,29 @@ const Navbar = () => {
   const dispatch = useAppDispatch();
   const [lang, setLang] = useState<string>(getDataFromLocalStorage("lang"));
 
-  //========== Handlers ===========//
-
+  // const inputRef = useRef<string | null>("");
+  const [shipmentSearched, setShipmentSearched] = useState<number | undefined>(
+    undefined
+  );
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [shipment] = useGetShipment(shipmentSearched);
+  if (shipment) dispatch(storeShipment(shipment));
   useEffect(() => {
     dispatch(i18n.language === "ar" ? enToAr() : arToEn());
   }, [lang]);
 
-  // mx-auto max-w-7xl px-2 sm:px-6 lg:px-8
+  //========== Handlers ===========//
+  useEffect(() => {
+  }, [inputRef]);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); 
+    if (inputRef.current !== null) {
+      console.log("Name value: " + inputRef?.current.value);
+      setShipmentSearched(+inputRef.current.value);
+    }
+    e.currentTarget.reset();
+  };
+
   return (
     <Disclosure as="nav" className="bg-white border-b border-gray-300">
       {({ open }) => (
@@ -160,57 +178,45 @@ const Navbar = () => {
                   } sm:static sm:inset-auto  sm:pr-0`}
                 >
                   {/* Start Track Shipment Button and input */}
-                  <Menu
-                    as="section"
-                    className={`relative ml-3 ${
+                  <section
+                    className={`trigger-button leading-5  relative ml-3 ${
                       lang === "en" ? "border-r-2" : "border-l-2"
                     } hover:text-primary `}
                   >
-                    <div>
-                      <Menu.Button className="relative flex rounded-full bg-white py-1 px-2 text-sm ">
-                        <span
-                          className={` ${
-                            lang === "en" ? "inset-3" : "inset-3"
-                          } `}
-                        />
-                        <span className="sr-only">Open user menu</span>
-                        {t("track_shipment")}
-                      </Menu.Button>
-                    </div>
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
+                    <section className="trigger-button-content relative flex rounded-full bg-white py-1 px-2 text-sm cursor-pointer">
+                      <span
+                        className={` ${lang === "en" ? "inset-3" : "inset-3"} `}
+                      />
+                      {t("track_shipment")}
+                    </section>
+                    {/* Start Drop List  menu */}
+                    <div
+                      className={
+                        "dropdown-content block px-4 py-2 text-sm text-gray-700"
+                      }
                     >
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <Menu.Item>
-                          {({ active }) => (
-                            <div
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                              onClick={(e) => {
-                                e.preventDefault(); // Prevent the click event from propagating to the parent menu
-                              }}
-                            >
-                              <p>{t("track_your_shipment")}</p>
-                              <div>
-                                <input
-                                  type="text"
-                                  className="w-full border-2 rounded-md my-2 py-1 px-2 "
-                                />
-                              </div>
-                            </div>
-                          )}
-                        </Menu.Item>
-                      </Menu.Items>
-                    </Transition>
-                  </Menu>
+                      <p>{t("track_your_shipment")}</p>
+                      <form onSubmit={handleSubmit} className="my-2">
+                        <div className="relative">
+                          <input
+                            ref={inputRef}
+                            name="shipmentNumber"
+                            type="number"
+                            className="w-full border-2 rounded-md py-1 px-2"
+                          />
+                          <button
+                            className="absolute z-10 right-0 bg-primary text-white px-2 py-1 rounded-r-md"
+                            type="submit"
+                            onClick={() => close()}
+                          >
+                            <Search />
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                    {/* End Drop List  menu */}
+                  </section>
+
                   {/* End Track Shipment Button and input */}
 
                   <section

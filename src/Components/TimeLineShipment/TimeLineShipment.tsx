@@ -20,25 +20,15 @@ import { shipmentStatusHandler } from "../../helpers/Functions";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useSelector } from "react-redux";
-import { langSelector } from "../../RTK/shipment/shipment";
 import { useTranslation } from "react-i18next";
 import { IShipment } from "../../interfaces";
+import { langSelector } from "../../RTK/features/LangSlice/LangSlice";
 
-// const colorStatus = "orange";
-// const shipmentStatus = "TICKET_CREATED";
-
-// const steps = [
-//   "TICKET_CREATED",
-//   "PACKAGE_RECEIVED",
-//   "OUT_FOR_DELIVERY",
-//   "DELIVERED",
-// ];
 // line options
 interface ColorlibConnectorProps extends StepConnectorProps {
   colorstatus: string | undefined;
 }
 
-// const ColorlibConnector = styled(StepConnector)<ColorlibConnectorProps>(
 //   ({ colorstatus = "orange" }) => ({
 //     [`&.${stepConnectorClasses.alternativeLabel}`]: {
 //       top: 22,

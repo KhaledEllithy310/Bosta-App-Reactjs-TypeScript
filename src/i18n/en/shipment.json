@@ -13,11 +13,12 @@
   "last_update": "Last update",
   "provider": "Provider",
   "shipment_details": "Shipment Details",
-  "branch_name": "Branch",
+  "branch": "Branch",
   "date": "Date",
   "time": "Time",
   "details": "Details",
   "delivery_address": "delivery address",
-  "shipment_problems": "is there any problem with your shipment?",
-  "report": "report a complaint"
+  "shipment_problems": "is there any problem with your shipment?!",
+  "report": "report a complaint",
+  "address": "  Cairo, Imbaba, Talaat Harb Street, Al-Ummal City, next to the Prince’s House, 17, Block 33,"
 }
