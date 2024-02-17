@@ -181,20 +181,19 @@ interface IProps {
   };
   shipment: IShipment;
 }
-export default function TimeLineShipment({ shipmentStatus, shipment }: IProps) {
+export default function TimeLineShipment({ shipment }: IProps) {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const { lang } = useSelector(langSelector);
   const { t } = useTranslation("shipment");
 
-  React.useEffect(() => {
-    console.log(shipmentStatus.state);
-    if (shipmentStatus.state === "TICKET_CREATED") {
-      console.log(shipmentStatus.state);
-    }
-  }, []);
-
-  console.log("shipment", shipmentStatusHandler(shipmentStatus.state));
+  // React.useEffect(() => {
+  //   console.log(shipment.CurrentStatus.state);
+  //   if (shipment.CurrentStatus.state === "TICKET_CREATED") {
+  //     console.log(shipmentStatus.state);
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const steps = [
     t("TICKET_CREATED"),
@@ -203,13 +202,10 @@ export default function TimeLineShipment({ shipmentStatus, shipment }: IProps) {
     t("DELIVERED"),
   ];
 
-  function shouldDisplayStatus(
-    shipmentStatus: { state: string; timestamp: string },
-    label: string
-  ) {
+  function shouldDisplayStatus(shipmentStatus: string, label: string) {
     return (
-      (shipmentStatus.state === "CANCELLED" ||
-        shipmentStatus.state === "NOT_YET_SHIPPED") &&
+      (shipmentStatus === "CANCELLED" ||
+        shipmentStatus === "NOT_YET_SHIPPED") &&
       (label === "Out for delivery" || label === "الشحنة خرجت للتسليم")
     );
   }
@@ -228,10 +224,12 @@ export default function TimeLineShipment({ shipmentStatus, shipment }: IProps) {
           }}
           orientation={isSmallScreen ? "vertical" : "horizontal"}
           alternativeLabel
-          activeStep={shipmentStatusHandler(shipmentStatus.state)?.step}
+          activeStep={shipmentStatusHandler(shipment.CurrentStatus.state)?.step}
           connector={
             <ColorlibConnector
-              colorstatus={shipmentStatusHandler(shipmentStatus.state)?.color}
+              colorstatus={
+                shipmentStatusHandler(shipment.CurrentStatus.state)?.color
+              }
             />
           }
         >
@@ -241,7 +239,7 @@ export default function TimeLineShipment({ shipmentStatus, shipment }: IProps) {
                 StepIconComponent={(props) => (
                   <ColorlibStepIcon
                     {...props}
-                    shipmentStatus={shipmentStatus}
+                    shipmentStatus={shipment.CurrentStatus}
                     icon={index + 1}
                     sx={{
                       display: "flex",
@@ -253,7 +251,7 @@ export default function TimeLineShipment({ shipmentStatus, shipment }: IProps) {
               >
                 <p className="sm:mt-5 flex flex-col gap-1 items-center justify-center">
                   <span> {label}</span>
-                  {shouldDisplayStatus(shipmentStatus, label) && (
+                  {shouldDisplayStatus(shipment.CurrentStatus.state, label) && (
                     <span
                       className="capitalize font-semibold"
                       style={{
@@ -263,7 +261,7 @@ export default function TimeLineShipment({ shipmentStatus, shipment }: IProps) {
                           : "red",
                       }}
                     >
-                      {t(shipmentStatus.state)}
+                      {t(shipment.CurrentStatus.state)}
                     </span>
                   )}
                 </p>

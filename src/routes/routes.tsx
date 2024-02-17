@@ -25,7 +25,7 @@ const Router = () => {
           errorElement={<ErrorHandler />}
         >
           <Route index element={<Home />} />
-          <Route path="tracking-shipment" element={<TrackingShipment />} />
+          <Route path="tracking-shipment/:id" element={<TrackingShipment />} />
         </Route>
       </>
     )
