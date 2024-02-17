@@ -17,7 +17,7 @@ const ShipmentInfo = ({ shipment }: IProps) => {
   const { lang } = useSelector(langSelector);
 
   return shipment ? (
-    <section className="flex flex-col gap-2 border py-3 px-2.5 rounded-t-md">
+    <section className="flex  flex-col gap-2 border py-3 px-2.5 rounded-t-md">
       {/* Start Shipment Info Header */}
       <div
         className={`shipment-info-header flex flex-col gap-5 sm:${reverseDirection(

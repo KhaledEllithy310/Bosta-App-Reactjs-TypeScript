@@ -266,7 +266,7 @@ const Navbar = () => {
                       : "text-black hover:bg-gray-700 hover:text-white",
                     `block ${
                       lang === "en" ? "text-left" : "text-right"
-                    } rounded-md px-3 py-2 text-base font-medium`
+                    } rounded-md px-3 py-2 text-base font-medium cursor-pointer`
                   )}
                   aria-current={item.current ? "page" : undefined}
                   onClick={() => {
@@ -279,7 +279,13 @@ const Navbar = () => {
                     }
                   }}
                 >
-                  <NavLink to={item.href}>{t(item.name)}</NavLink>{" "}
+                  {item.name === "lang" ? (
+                    <span className="cursor-pointer">{t(item.name)}</span>
+                  ) : (
+                    <NavLink to={item.href}>
+                      <span>{t(item.name)}</span>
+                    </NavLink>
+                  )}
                 </Disclosure.Button>
               ))}
             </div>
