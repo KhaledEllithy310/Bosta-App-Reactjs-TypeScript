@@ -141,12 +141,17 @@ const ColorlibStepIconRoot = styled("div")<ColorlibStepIconRootProps>(
   })
 );
 
+interface IPropsStepIcon {
+  shipmentStatus: {
+    state: string;
+    timestamp: string;
+  };
+}
 function ColorlibStepIcon({
   shipmentStatus,
   ...props
-}: StepIconProps & IProps) {
+}: StepIconProps & IPropsStepIcon) {
   const { active, completed, className } = props;
-  console.log(shipmentStatus, props);
 
   const icons: { [index: string]: React.ReactElement } = {
     1: <Inventory />,
@@ -175,10 +180,6 @@ function ColorlibStepIcon({
 }
 
 interface IProps {
-  shipmentStatus: {
-    state: string;
-    timestamp: string;
-  };
   shipment: IShipment;
 }
 export default function TimeLineShipment({ shipment }: IProps) {
