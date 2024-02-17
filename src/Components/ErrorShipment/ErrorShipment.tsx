@@ -1,7 +1,7 @@
 import { Search } from "@mui/icons-material";
 import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { changeTextDirection } from "../../helpers/Functions";
 import { useSelector } from "react-redux";
 import { langSelector } from "../../RTK/features/LangSlice/LangSlice";
@@ -11,6 +11,8 @@ export default function ErrorShipment() {
   const Navigate = useNavigate();
   const { t } = useTranslation("navbar");
   const { lang } = useSelector(langSelector);
+  const location = useLocation();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputRef.current !== null) {
@@ -20,7 +22,7 @@ export default function ErrorShipment() {
   };
 
   return (
-    <section className="w-1/4 mx-auto my-10">
+    <section className="container sm:w-1/2 md:w-1/3 mx-auto my-10">
       <p
         className={`text-xl font-bold capitalize ${changeTextDirection(lang)}`}
       >
@@ -42,9 +44,13 @@ export default function ErrorShipment() {
           </button>
         </div>
       </form>
-      <p className="bg-red-100 text-black-700 text-sm p-3 rounded-md">
-        {t("error_message")}
-      </p>
+      {location.pathname !== "/" ? (
+        <p className="bg-red-100 text-black-700 text-sm p-3 rounded-md">
+          {t("error_message")}
+        </p>
+      ) : (
+        ""
+      )}
     </section>
   );
 }

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from "react";
 import { Disclosure } from "@headlessui/react";
-import { Close, Dehaze, Search } from "@mui/icons-material";
+import { ArrowDropDown, Close, Dehaze, Search } from "@mui/icons-material";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
@@ -186,11 +186,15 @@ const Navbar = () => {
                       lang === "en" ? "border-r-2" : "border-l-2"
                     } hover:text-primary `}
                   >
-                    <section className="trigger-button-content relative flex rounded-full bg-white py-1 px-2 text-sm cursor-pointer">
+                    <section
+                      className={`${reverseDirection(
+                        lang
+                      )} trigger-button-content relative flex items-center rounded-full bg-white py-1 px-2 text-sm cursor-pointer`}
+                    >
                       <span
                         className={` ${lang === "en" ? "inset-3" : "inset-3"} `}
                       />
-                      {t("track_shipment")}
+                      <span> {t("track_shipment")}</span> <ArrowDropDown />
                     </section>
                     {/* Start Drop List  menu */}
                     <div
