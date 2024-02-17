@@ -51,7 +51,6 @@ const Navbar = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputRef.current !== null) {
-      console.log("Name value: " + inputRef?.current.value);
       setShipmentSearched(+inputRef.current.value);
       Navigate(`/tracking-shipment/${+inputRef.current.value}`);
     }

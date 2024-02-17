@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import reportImg from "../../../public/report.webp";
+import reportImg from "/report.webp";
 import { changeTextDirection, reverseDirection } from "../../helpers/Functions";
 import { langSelector } from "../../RTK/features/LangSlice/LangSlice";
 const ShipmentComplain = () => {

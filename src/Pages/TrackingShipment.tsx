@@ -5,6 +5,7 @@ import ShipmentInfo from "../Components/ShipmentInfo/ShipmentInfo";
 import TimeLineShipment from "../Components/TimeLineShipment/TimeLineShipment";
 import ShipmentInfoSkeleton from "../Components/Ui/ShipmentInfoSkeleton";
 import { shipmentSelector } from "../RTK/shipment/shipment";
+import ShipmentDetailsSkeleton from "../Components/Ui/ShipmentDetailsSkeleton";
 
 const TrackingShipment = () => {
   const { shipment } = useSelector(shipmentSelector);
@@ -31,7 +32,11 @@ const TrackingShipment = () => {
           className={`shipment-container flex flex-col md:flex-wrap gap-2 mt-6`}
         >
           <section className="flex-grow space-y-3">
-            <ShipmentDetails shipment={shipment} />
+            {Object.keys(shipment).length ? (
+              <ShipmentDetails shipment={shipment} />
+            ) : (
+              <ShipmentDetailsSkeleton />
+            )}
           </section>
           <section className="flex-1 space-y-3">
             <ShipmentComplain />

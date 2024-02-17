@@ -5,5 +5,6 @@
   "track_shipment": "Track Shipment",
   "track_your_shipment": "Track your shipment",
   "sign_in": "Sign In",
-  "lang": "عربي"
+  "lang": "عربي",
+  "error_message": "The shipment number you entered does not exist in the current time. Please check the number and try again later. For more help, please contact our customer service."
 }

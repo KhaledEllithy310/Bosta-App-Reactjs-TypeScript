@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { IShipment } from "../interfaces";
+import { useNavigate } from "react-router-dom";
 
 const useGetShipment = (
   shipmentNumber: number | undefined
@@ -11,6 +12,7 @@ const useGetShipment = (
   //   7234258, 13737343, 67151313;6741696 1892811
   // 6751226; create
   //13737343 cancellation
+  const Navigate = useNavigate();
 
   const [shipment, setShipment] = useState<IShipment | undefined>(undefined);
   const URL = `https://tracking.bosta.co/shipments/track/${
@@ -21,9 +23,10 @@ const useGetShipment = (
       try {
         const response = await axios.get(URL);
         setShipment(response.data);
-        console.log(response);
+        // console.log(response);
       } catch (e) {
-        console.log(e);
+        // console.log(e);
+        Navigate("/error-shipment");
       }
     };
 

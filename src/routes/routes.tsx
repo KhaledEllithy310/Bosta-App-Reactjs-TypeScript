@@ -7,6 +7,8 @@ import Home from "../Pages/Home";
 import RootLayout from "../Pages/Layout";
 import TrackingShipment from "../Pages/TrackingShipment";
 import ErrorHandler from "../Components/Errors/ErrorHandler";
+import PageNotFound from "../Pages/NotFoundPage";
+import ErrorShipment from "../Components/ErrorShipment/ErrorShipment";
 
 export interface IUser {
   email: string;
@@ -26,7 +28,10 @@ const Router = () => {
         >
           <Route index element={<Home />} />
           <Route path="tracking-shipment/:id" element={<TrackingShipment />} />
+          <Route path="/error-shipment" element={<ErrorShipment />} />
         </Route>
+
+        <Route path="*" element={<PageNotFound />} />
       </>
     )
   );
